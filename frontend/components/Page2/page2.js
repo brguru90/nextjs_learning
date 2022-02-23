@@ -1,15 +1,21 @@
 import Head from 'next/head'
 import styles from './page2.module.scss'
-import swrHook from '../Shared/NavBar/swrHook/swrHook';
+import swrHook from '../Shared/swrHook/swrHook';
 import { useEffect } from 'react';
+
 
 export default function Page2() {
 
-  const [data,error, callSWR] = swrHook('/api/test_data')
+  const [ data, error,callSWR ] = swrHook('/api/test_data')
 
-  useEffect(()=>{
-    callSWR()
-  },[])
+  console.log("page2")
+
+  useEffect(() => {
+   console.log("UE page2")
+   callSWR()
+  }, [])
+  
+
 
   return (
     <>
@@ -27,8 +33,8 @@ export default function Page2() {
             </tr>
           </thead>
           <tbody>
-            {data && data.map(_data => {
-              return <tr>
+            {data && data.map((_data,i) => {
+              return <tr key={_data.name+"_"+i}>
                 <td>{_data.name}</td>
                 <td>{_data.resident}</td>
               </tr>

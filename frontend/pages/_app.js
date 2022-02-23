@@ -1,5 +1,6 @@
 import '../styles/globals.scss'
-import NavBar from "../components/Shared/NavBar/navBar"
+import dynamic from "next/dynamic";
+const NavBar=dynamic(()=>import("../components/Shared/NavBar/navBar"))
 
 
 function MyApp({ Component, pageProps }) {

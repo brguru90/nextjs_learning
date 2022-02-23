@@ -1,6 +1,7 @@
-import Page2 from "../components/Page2/page2"
+import dynamic from "next/dynamic";
+const Page2Component=dynamic(()=>import("../components/Page2/page2"))
 
 
-export default function() {
-  return <Page2 />
+export default function Page2(props) {
+  return <Page2Component {...props} />
 }

@@ -1,7 +1,15 @@
 import Head from 'next/head'
+import { useEffect } from 'react'
 import styles from './page1.module.scss'
 
-export default function page1({api_data}) {
+export default function Page1({api_data}) {
+
+  console.log("page1")
+
+  useEffect(() => {
+    console.log("UE page1")
+   }, [])
+
   return (
     <>
     <Head>
@@ -18,8 +26,8 @@ export default function page1({api_data}) {
           </tr>
         </thead>
         <tbody>
-        {api_data && api_data.map(_data=>{
-          return <tr>
+        {api_data && api_data.map((_data,i)=>{
+          return <tr key={_data.name+"_"+i}>
             <td>{_data.name}</td>
             <td>{_data.resident}</td>
           </tr>
