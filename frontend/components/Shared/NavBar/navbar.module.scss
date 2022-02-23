@@ -1,0 +1,51 @@
+.navbar {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    align-items: stretch;
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(176, 92, 199);
+        padding-left: 20px;
+        padding-right: 20px;
+
+        p {
+            color: white;
+            margin: 0;
+        }
+    }
+
+    .menu_wrap {
+        .menu {
+            display: flex;
+            list-style-type: none;
+            height: 100%;
+            margin: 0;
+            padding-left: 20px;
+            background-color: rgb(245, 236, 236);
+
+            li {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                border-right: solid 2px rgb(235, 223, 223);
+
+                &:nth-last-child(1) {
+                    border: none;
+                }
+
+                .menu_item {
+
+                    a {
+                        padding: 20px;
+                    }
+                }
+
+            }
+        }
+    }
+
+}
