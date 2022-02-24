@@ -1,0 +1,27 @@
+{
+  "name": "learn_nextjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently 'npm run dev --prefix frontend/' 'npm start --prefix backend/'",
+    "prod": "concurrently 'npm run build_start --prefix frontend/' 'npm start --prefix backend/'",
+    "install_frontend": "npm install --prefix frontend/",
+    "install_backend": "npm install --prefix backend/",
+    "install": "npm-run-all --serial install_frontend install_backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brguru90/nextjs_learning.git"
+  },
+  "author": "Guruprasad BR",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brguru90/nextjs_learning/issues"
+  },
+  "homepage": "https://github.com/brguru90/nextjs_learning#readme",
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "npm-run-all": "^4.1.5"
+  }
+}

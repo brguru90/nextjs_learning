@@ -5,3 +5,4 @@ frontend/package-lock.json
 frontend/.next
 frontend/public/vercel.svg
 frontend/out
+node_modules

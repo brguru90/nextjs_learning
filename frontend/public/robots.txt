@@ -1,0 +1,15 @@
+# Block all crawlers for /accounts
+User-agent: *
+Disallow: /page2
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Allow all crawlers
+User-agent: *
+Allow: /page1
+
+# Allow all crawlers
+User-agent: *
+Allow: /page3

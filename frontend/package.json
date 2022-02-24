@@ -8,6 +8,7 @@
     "export": "DEPLOY=cdn next build && DEPLOY=cdn next export",
     "start": "next start",
     "lint": "next lint",
+    "build_start": "DEPLOY=node  next build && next start",
     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {

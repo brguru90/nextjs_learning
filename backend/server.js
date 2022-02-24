@@ -1,4 +1,5 @@
 const express = require("express")
+const cookieParser = require("cookie-parser");
 const app = express()
 
 const port =  8000
@@ -13,6 +14,8 @@ app.use(
         extended: false,
     })
 )
+
+app.use(cookieParser());
 
 app.use("/api/", require("./apis/set1"))
 

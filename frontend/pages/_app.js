@@ -10,4 +10,9 @@ function MyApp({ Component, pageProps }) {
   </div>
 }
 
+
+export function reportWebVitals(metric) {
+  console.log(metric)
+}
+
 export default MyApp

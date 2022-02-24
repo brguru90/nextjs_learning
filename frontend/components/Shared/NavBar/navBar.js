@@ -24,6 +24,11 @@ export default function NavBar() {
                             <Link href="/page2" as={process.env.DEPLOY=="cdn"?"/page2.html":""}> Page2 </Link>
                         </span>
                     </li>
+                    <li>
+                        <span className={style.menu_item}>
+                            <Link href="/page3"> Page3 </Link>
+                        </span>
+                    </li>
                 </ul>
             </div>
         </div>
