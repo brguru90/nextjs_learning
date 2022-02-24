@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
+
+require('dotenv').config({ path: __dirname + "/../.env" })
+
+// console.log("process.env.NAME",process.env.NAME)
+
+
 const nextConfig = {
   reactStrictMode: true,
   basePath:process.env.DEPLOY=="cdn"?"/next":"",
@@ -16,7 +22,3 @@ const nextConfig = {
 
 module.exports = nextConfig
 
-
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true'
-})

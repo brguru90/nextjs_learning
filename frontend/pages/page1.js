@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-const Page1Component = dynamic(() => import("../components/Page1/page1"))
+const Page1Component = dynamic(() => import("../components/Page1/page1.jsx"))
 
 export default function Page1(props) {
   return <Page1Component {...props} />
@@ -31,7 +31,8 @@ export async function getServerSideProps({ req,res }) {
 
   return {
     props: {
-      api_data: await response.json()
+      api_data: await response.json(),
+      env:JSON.parse(JSON.stringify(process.env))
     }
   }
 }

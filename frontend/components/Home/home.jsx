@@ -13,7 +13,7 @@ export default function Home() {
           content="some description for SEO"
         />
         {/* ----------  og: is good for sharing links on  social media like FB & Whatsapp ----------- */}
-         <meta property="og:title" content="Social Title for Cool Page" />
+        <meta property="og:title" content="Social Title for Cool Page" />
         <meta
           property="og:description"
           content="And a social description for our cool page"
@@ -25,6 +25,7 @@ export default function Home() {
       </Head>
       <div className={styles.container}>
         <h1>Home page</h1>
+        
       </div>
     </>
   )

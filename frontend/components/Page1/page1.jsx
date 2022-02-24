@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 import styles from './page1.module.scss'
 
-export default function Page1({api_data}) {
+export default function Page1({api_data,env}) {
 
   console.log("page1")
 
@@ -34,6 +34,11 @@ export default function Page1({api_data}) {
         })}
         </tbody>
       </table>
+      <br />
+      <br />
+        <p style={{wordBreak:"break-word"}}>
+          ENV:<br />{JSON.stringify(env)}
+        </p>
     </div>
   </>
   )

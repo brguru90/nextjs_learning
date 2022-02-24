@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently 'npm run dev --prefix frontend/' 'npm start --prefix backend/'",
-    "prod": "concurrently 'npm run build_start --prefix frontend/' 'npm start --prefix backend/'",
+    "norm_start": "concurrently 'npm run dev --prefix frontend/' 'npm start --prefix backend/'",
+    "norm_prod": "concurrently 'npm run build_start --prefix frontend/' 'npm start --prefix backend/'",
+    "cust_prod": "npm run cust_server_prod --prefix frontend/",
+    "cust_dev": "npm run cust_server_dev --prefix frontend/",
     "install_frontend": "npm install --prefix frontend/",
     "install_backend": "npm install --prefix backend/",
-    "install": "npm-run-all --serial install_frontend install_backend"
+    "install": "npm-run-all --serial install_frontend install_backend",
+    "start":"npm run cust_dev",
+    "prod":"npm run cust_prod"
   },
   "repository": {
     "type": "git",
