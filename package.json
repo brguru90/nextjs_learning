@@ -20,6 +20,7 @@
     "@3": "==============================================================================================",
     "start_prod": "pm2 start ecosystem.config.js",
     "stop_prod": "pm2 stop ecosystem.config.js",
+    "delete_prod": "pm2 delete ecosystem.config.js",
     "reload_prod": "pm2 reload ecosystem.config.js",
     "autostart_prod": "pm2 startup",
     "remove_autostart_prod": "pm2 unstartup",
@@ -29,7 +30,7 @@
     "@4": "====================================================================================",
     "enable_prod": "npm-run-all --serial 'start_prod --env production' autostart_prod pm2_save pm2_list",
     "enable_prod_with_build": "npm-run-all --serial stop_prod build_prod 'start_prod --env production' autostart_prod pm2_save pm2_list",
-    "disable_prod": "npm-run-all --serial 'stop_prod --env production' remove_autostart_prod pm2_save pm2_list",
+    "disable_prod": "npm-run-all --serial 'stop_prod --env production' remove_autostart_prod delete_prod pm2_save pm2_list",
     "restart_prod_build": "npm-run-all --serial disable_prod enable_prod_with_build",
     "restart_prod": "npm-run-all --serial disable_prod enable_prod",
     "reload_ui": "npm-run-all --serial build_prod reload_prod"
