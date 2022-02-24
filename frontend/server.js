@@ -4,9 +4,11 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-const port = process.env.SERVER_PORT || 8000
+const port =  process.env.SERVER_PORT || 8000
 
-console.log("next_server process.env.SERVER_PORT",process.env.SERVER_PORT)
+console.log("next_server process.env.SERVER_PORT",port)
+
+process.chdir(__dirname);
 
 app.prepare()
     .then(() => {

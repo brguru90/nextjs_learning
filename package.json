@@ -4,18 +4,35 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install_frontend": "npm install --prefix frontend/",
-    "install_backend": "npm install --prefix backend/",
+    "install_frontend": "yarn --cwd ./frontend/ install",
+    "install_backend": "yarn --cwd ./backend/ install",
     "install": "npm-run-all --serial install_frontend install_backend",
-    "@@":"==============================================================================================",
-    "norm_start": "concurrently 'npm run dev --prefix frontend/' 'npm start --prefix backend/'",
-    "norm_prod": "concurrently 'npm run build_start --prefix frontend/' 'npm start --prefix backend/'",
-    "@1":"==============================================================================================",
-    "cust_prod": "npm run cust_server_prod --prefix frontend/",
-    "cust_dev": "npm run cust_server_dev --prefix frontend/",
-    "@2":"==============================================================================================",
-    "start":"npm run cust_dev",
-    "prod":"npm run cust_prod"
+    "@@": "==============================================================================================",
+    "norm_start": "concurrently 'yarn --cwd ./frontend/ dev' 'yarn --cwd ./backend/ start'",
+    "norm_prod": "concurrently 'yarn --cwd ./frontend/ build_start' 'yarn --cwd ./backend/ start'",
+    "@1": "==============================================================================================",
+    "cust_prod": "yarn --cwd ./frontend/ cust_server_prod",
+    "cust_dev": "yarn --cwd ./frontend/ cust_server_dev",
+    "build_prod":"DEPLOY=node NODE_ENV=production NEXT_SERVER=true yarn --cwd ./frontend/ build",
+    "@2": "==============================================================================================",
+    "start": "yarn cust_dev",
+    "prod": "yarn cust_prod",
+    "@3": "==============================================================================================",
+    "start_prod": "pm2 start ecosystem.config.js",
+    "stop_prod": "pm2 stop ecosystem.config.js",
+    "reload_prod": "pm2 reload ecosystem.config.js",
+    "autostart_prod": "pm2 startup",
+    "remove_autostart_prod": "pm2 unstartup",
+    "pm2_save": "pm2 save",
+    "pm2_list": "pm2 list",
+    "pm2": "pm2",
+    "@4": "====================================================================================",
+    "enable_prod": "npm-run-all --serial 'start_prod --env production' autostart_prod pm2_save pm2_list",
+    "enable_prod_with_build": "npm-run-all --serial stop_prod build_prod 'start_prod --env production' autostart_prod pm2_save pm2_list",
+    "disable_prod": "npm-run-all --serial 'stop_prod --env production' remove_autostart_prod pm2_save pm2_list",
+    "restart_prod_build": "npm-run-all --serial disable_prod enable_prod_with_build",
+    "restart_prod": "npm-run-all --serial disable_prod enable_prod",
+    "reload_ui": "npm-run-all --serial build_prod reload_prod"
   },
   "repository": {
     "type": "git",
@@ -29,6 +46,7 @@
   "homepage": "https://github.com/brguru90/nextjs_learning#readme",
   "devDependencies": {
     "concurrently": "^7.0.0",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "pm2": "^5.2.0"
   }
 }
