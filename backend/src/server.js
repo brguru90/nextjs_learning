@@ -1,5 +1,7 @@
 const express = require("express")
 const cookieParser = require("cookie-parser");
+const swaggerJSDoc = require('swagger-jsdoc');  
+const swaggerUI = require('swagger-ui-express'); 
 require('dotenv').config({ path: __dirname + "/../../.env" })
 const app = express()
 
@@ -16,6 +18,18 @@ app.use(
 
 app.use(cookieParser());
 app.use("/server_api/", require("./apis/set1"))
+
+const swaggerOptions = {  
+    swaggerDefinition: {  
+        info: {  
+            title:'Test API',  
+            version:'1.0.0'  
+        }  
+    },  
+    apis:['./src/apis/set1.js'],  
+} 
+const swaggerDocs = swaggerJSDoc(swaggerOptions);  
+app.use('/server_api',swaggerUI.serve,swaggerUI.setup(swaggerDocs));
 
 
 
