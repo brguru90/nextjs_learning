@@ -3,19 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "DEPLOY=node NODE_ENV=production next build",
-    "start": "next start",
-    "export": "DEPLOY=cdn next export",
-    "build_ssg": "DEPLOY=cdn next build",
-    "ssg": "npm-run-all --serial build_ssg export",
+    "dev": "env-cmd -f ../.env next dev",
+    "build": "DEPLOY=node NODE_ENV=production env-cmd -f ../.env next build",
+    "start": "DEPLOY=node NODE_ENV=production env-cmd -f ../.env next start",
     "lint": "next lint",
     "build_start": "npm-run-all --serial build start",
-    "cust_server": "nodemon server.js",
-    "cust_server_dev": "DEPLOY=node NODE_ENV=development NEXT_SERVER=true nodemon server.js",
-    "cust_server_prod": "DEPLOY=node NODE_ENV=production NEXT_SERVER=true npm-run-all --serial build cust_server"
+    "cust_server": "DEPLOY=node NODE_ENV=production NEXT_SERVER=false node server.js",
+    "cust_server_build_prod": "DEPLOY=node NODE_ENV=production BUILD_NEXT=true node server.js",
+    "cust_server_run_prod": "DEPLOY=node NODE_ENV=production NEXT_SERVER=true node server.js",
+    "cust_server_dev": "DEPLOY=node NODE_ENV=development NEXT_SERVER=true env-cmd -f ../.env nodemon server.js",
+    "cust_server_prod": "env-cmd -f ../.env npm-run-all --serial cust_server_build_prod cust_server_run_prod"
   },
   "dependencies": {
+    "chmodr": "^1.2.0",
     "dotenv": "^16.0.0",
     "next": "12.1.0",
     "react": "17.0.2",
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^12.1.0",
     "cross-env": "^7.0.3",
+    "env-cmd": "^10.1.0",
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0",
     "nodemon": "^2.0.15",

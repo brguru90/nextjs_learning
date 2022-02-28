@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 export default function Page2() {
 
-  const [ data, error,callSWR ] = swrHook('/api/test_data')
+  const [ data, error,callSWR ] = swrHook('/server_api/test_data')
 
   console.log("page2")
 
@@ -37,6 +37,7 @@ export default function Page2() {
               return <tr key={_data.name+"_"+i}>
                 <td>{_data.name}</td>
                 <td>{_data.resident}</td>
+                <td>{_data._date}</td>
               </tr>
             })}
           </tbody>

@@ -29,6 +29,11 @@ export default function NavBar() {
                             <Link href="/page3"> Page3 </Link>
                         </span>
                     </li>
+                    <li>
+                        <span className={style.menu_item}>
+                            <Link href="/page4"> Page4 </Link>
+                        </span>
+                    </li>
                 </ul>
             </div>
         </div>

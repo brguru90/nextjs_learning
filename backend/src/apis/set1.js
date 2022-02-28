@@ -12,11 +12,13 @@ router.all("/test_data", (req, res) => {
     res.json([
         {
             name: "guru",
-            resident: "shimoga"
+            resident: "shimoga",
+            _date:new Date()
         },
         {
             name: "manju",
-            resident: "hassan"
+            resident: "hassan",
+            _date:new Date()
         },
     ])
 })

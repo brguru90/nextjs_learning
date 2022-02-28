@@ -30,6 +30,7 @@ export default function Page1({api_data,env}) {
           return <tr key={_data.name+"_"+i}>
             <td>{_data.name}</td>
             <td>{_data.resident}</td>
+            <td>{_data._date}</td>
           </tr>
         })}
         </tbody>

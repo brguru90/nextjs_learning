@@ -13,7 +13,7 @@ export async function getServerSideProps({ req,res }) {
   const baseUrl = req ? `${protocol}://${req.headers.host}` : ''
   const cookie = req ? req.headers.cookie : null
 
-  let response = await fetch(baseUrl + "/api/test_data", {
+  let response = await fetch(baseUrl + "/server_api/test_data", {
     headers: {
       cookie
     }

@@ -3,8 +3,8 @@ const cookieParser = require("cookie-parser");
 require('dotenv').config({ path: __dirname + "/../../.env" })
 const app = express()
 
-app.use(function (req, res, next) {
-    console.log("global middleware")
+app.use("/server_api/",function (req, res, next) {
+    console.log("global middleware",req.url)
     return next()
 })
 app.use(
@@ -15,7 +15,7 @@ app.use(
 )
 
 app.use(cookieParser());
-app.use("/api/", require("./apis/set1"))
+app.use("/server_api/", require("./apis/set1"))
 
 
 
@@ -30,8 +30,9 @@ if (process.env.NEXT_SERVER == undefined || process.env.NEXT_SERVER == "false" |
 
     app.listen(port, () => {
         console.log(`App started running at ${port}\ncwd is ${__dirname}`)
-        console.log(`running ========>  http://127.0.0.1:${port}`)
+        console.log(`running backend ========>  http://127.0.0.1:${port}`)
     })
+
 }
 
 module.exports = app
