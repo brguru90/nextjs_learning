@@ -1,11 +1,14 @@
 const express = require("express")
 const axios = require('axios');
 const router = express.Router()
+const fs = require('fs');
+const { json } = require("express");
 
 
-const some_data_before_revalidation={
+fs.writeFileSync('./shared_sample.txt', JSON.stringify({
     _date: new Date()
-}
+}));
+
 
 
 /** 
@@ -24,17 +27,19 @@ router.get("/test_data", (req, res) => {
         res.cookie("name", "guru", { expires: new Date(new Date().getTime() + (2 * 60 * 60 * 1000)), httpOnly: true, sameSite: "Strict" });
     }
 
+    const a_data=JSON.parse(fs.readFileSync('./shared_sample.txt',
+            {encoding:'utf8', flag:'r'}))
 
     res.json([
         {
             name: "guru",
             resident: "shimoga",
-            _date:some_data_before_revalidation["_date"]
+            _date:a_data["_date"]
         },
         {
             name: "manju",
             resident: "hassan",
-            _date:some_data_before_revalidation["_date"]
+            _date:a_data["_date"]
         },
     ])
 })
@@ -50,7 +55,9 @@ router.all("/updateISR", (req, res) => {
 
     var fullUrl = req.protocol + '://' + req.get('host')
 
-    some_data_before_revalidation["_date"]=new Date()
+    fs.writeFileSync('./shared_sample.txt', JSON.stringify({
+        _date: new Date()
+    }));
 
 
     setImmediate(async () => {
