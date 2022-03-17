@@ -15,6 +15,7 @@
     "cust_server_prod": "env-cmd -f ../.env npm-run-all --serial cust_server_build_prod cust_server_run_prod"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "chmodr": "^1.2.0",
     "dotenv": "^16.0.0",
     "next": "12.1.0",

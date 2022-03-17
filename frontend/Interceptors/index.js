@@ -4,7 +4,7 @@ import axios from 'axios';
 
 axios.interceptors.request.use(
    (req) => {
-      console.info("req ====> ", req.url, req)
+      // console.info("req ====> ", req.url, req)
       return req;
    },
    (err) => {
@@ -17,7 +17,7 @@ axios.interceptors.response.use(
       if (res.status === 201) {
          console.log('Posted Successfully');
       }
-      console.info("res ====> ", res?.config?.url, res)
+      // console.info("res ====> ", res?.config?.url, res)
       return res;
    },
    (err) => {
