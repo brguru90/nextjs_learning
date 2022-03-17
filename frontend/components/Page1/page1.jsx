@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 import styles from './page1.module.scss'
 
-export default function Page1({api_data,env}) {
+export default function Page1({api_data,env,pid=null}) {
 
   console.log("page1")
 
@@ -18,6 +18,7 @@ export default function Page1({api_data,env}) {
     <div className={styles.container}>
       <h1>Page1</h1>
       <br />
+      {pid && <h2>PID: {pid}</h2>}
       <table>
         <thead>
           <tr>

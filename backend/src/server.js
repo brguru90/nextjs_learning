@@ -6,7 +6,7 @@ require('dotenv').config({ path: __dirname + "/../../.env" })
 const app = express()
 
 app.use("/server_api/",function (req, res, next) {
-    console.log("global middleware",req.url)
+    // console.log("global middleware",req.url)
     return next()
 })
 app.use(

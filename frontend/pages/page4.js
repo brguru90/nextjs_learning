@@ -9,7 +9,7 @@ export default function Page1(props) {
 // ISR
 export async function getStaticProps(context) {
   const _url="http://"+process.env.SERVER_HOST+":"+process.env.SERVER_PORT + "/server_api/test_data"
-  console.log("url",_url)
+  // console.log("url",_url)
   let response = await fetch(_url)
 
 
@@ -17,6 +17,7 @@ export async function getStaticProps(context) {
     props: {
       // unstable_revalidate:1,
       api_data: await response.json(),
+      pid:process.pid,
       env:JSON.parse(JSON.stringify(process.env))
     }
   }
