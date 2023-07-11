@@ -32,6 +32,7 @@ export default function Page1({api_data,env,pid=null}) {
             <td>{_data.name}</td>
             <td>{_data.resident}</td>
             <td>{_data._date}</td>
+            <td>{_data.dt}</td>
           </tr>
         })}
         </tbody>

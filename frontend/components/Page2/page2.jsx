@@ -6,15 +6,15 @@ import { useEffect } from 'react';
 
 export default function Page2() {
 
-  const [ data, error,callSWR ] = swrHook('/server_api/test_data')
+  const [data, error, callSWR] = swrHook('/server_api/test_data')
 
   console.log("page2")
 
   useEffect(() => {
-   console.log("UE page2")
-   callSWR()
+    console.log("UE page2")
+    callSWR()
   }, [])
-  
+
 
 
   return (
@@ -33,11 +33,12 @@ export default function Page2() {
             </tr>
           </thead>
           <tbody>
-            {data && data.map((_data,i) => {
-              return <tr key={_data.name+"_"+i}>
+            {data && data.map((_data, i) => {
+              return <tr key={_data.name + "_" + i}>
                 <td>{_data.name}</td>
                 <td>{_data.resident}</td>
                 <td>{_data._date}</td>
+                <td>{_data.dt}</td>
               </tr>
             })}
           </tbody>

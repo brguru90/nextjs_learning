@@ -9,7 +9,7 @@ module.exports = {
             "node_args": [
                 "--max_old_space_size=3000"
             ],
-            instances: "max",
+            instances: "8",
             exec_mode: "cluster",
             env_qa: {
                 "SERVER_PORT": 8888,

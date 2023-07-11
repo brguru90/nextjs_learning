@@ -34,12 +34,14 @@ router.get("/test_data", (req, res) => {
         {
             name: "guru",
             resident: "shimoga",
-            _date:a_data["_date"]
+            _date:a_data["_date"],
+            dt:new Date(),
         },
         {
             name: "manju",
             resident: "hassan",
-            _date:a_data["_date"]
+            _date:a_data["_date"],
+            dt:new Date(),
         },
     ])
 })

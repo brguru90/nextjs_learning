@@ -8,7 +8,7 @@ export default function NavBar() {
                 <p>Next JS</p>
             </div>
             <div className={style.menu_wrap}>
-                <ul className={style.menu} d_type={process.env.DEPLOY}>
+                <ul className={style.menu} data-d_type={process?.env?.DEPLOY || "undefined"}>
                     <li>
                         <span className={style.menu_item}>
                             <Link href="/"> Home </Link>
@@ -21,7 +21,7 @@ export default function NavBar() {
                     </li>
                     <li>
                         <span className={style.menu_item}>
-                            <Link href="/page2" as={process.env.DEPLOY=="cdn"?"/page2.html":""}> Page2 </Link>
+                            <Link href="/page2" as={process?.env?.DEPLOY=="cdn"?"/page2.html":""}> Page2 </Link>
                         </span>
                     </li>
                     <li>

@@ -15,6 +15,7 @@ export default async function handler(req, res) {
     }
     try {
       await res.unstable_revalidate('/page4', req)
+      try{axios.get("/page4")}catch{}
       console.log("just revalidated for pid=", process.pid)
       return res.json({ revalidated: true, pid: process.pid })
     } catch (err) {
@@ -26,11 +27,11 @@ export default async function handler(req, res) {
 
   } else {
     // else start revalidation
-    console.log("starting revalidation on all process")
     const total_node_instances = Number(process.env.instances) || 1
+    console.log("starting revalidation on all process.",{total_node_instances})
     let revalidate_instance_by_pid = {}
     let instances_revalidated = 0
-    let max_request = total_node_instances * 4
+    let max_request = total_node_instances * 10
     const protocol = req.headers['x-forwarded-proto'] || 'http'
     const baseUrl = req ? `${protocol}://${req.headers.host}` : ''
     console.log("baseUrl", baseUrl)
@@ -42,14 +43,17 @@ export default async function handler(req, res) {
 
     try {
       await res.unstable_revalidate('/page4', req)
+      try{axios.get("/page4")}catch{}
       revalidate_instance_by_pid[process.pid] = "done"
       instances_revalidated = 1
     } catch (error) {
-
+      console.error(error)
     }
 
+    console.log("process.pid", process.pid)
     setImmediate(async () => {
       while (instances_revalidated < total_node_instances && (max_request--) > 0) {
+        console.log({max_request})
         try {
           const response = await axios({
             method: "get",
@@ -72,6 +76,7 @@ export default async function handler(req, res) {
           instances_revalidated = total_node_instances + 1
         }
       }
+      console.log({revalidate_instance_by_pid})
       return res.json({
         msg: "sent revalidate request to all  of instance of next js",
         status: "success",
